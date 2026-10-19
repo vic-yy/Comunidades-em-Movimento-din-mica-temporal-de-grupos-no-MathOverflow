@@ -29,6 +29,20 @@ python src/topic_validation.py         # NMI, consistência de tema e área dos 
 ```
 Rode sempre a partir da raiz do repositório. `src/mo_communities.py` é o módulo central (janelas, Leiden via igraph/leidenalg, métricas, rastreio por Jaccard, linhagens, Kaplan-Meier, features de especialistas).
 
+## Dados e referências
+Arestas (SNAP, rede temporal sx-mathoverflow; página do conjunto: https://snap.stanford.edu/data/sx-mathoverflow.html):
+- respostas para perguntas (a2q): https://snap.stanford.edu/data/sx-mathoverflow-a2q.txt.gz
+- comentários em perguntas (c2q): https://snap.stanford.edu/data/sx-mathoverflow-c2q.txt.gz
+- comentários em respostas (c2a): https://snap.stanford.edu/data/sx-mathoverflow-c2a.txt.gz
+
+Cada linha tem `origem destino timestamp_unix`. O script `src/download_data.py` baixa os três e os salva como `data/a2q.txt.gz`, `data/c2q.txt.gz` e `data/c2a.txt.gz`.
+
+Tags e assuntos (opcional, só para a validação temática): dump público do Stack Exchange, arquivo `mathoverflow.net.7z` (cerca de 510 MB), em https://archive.org/details/stackexchange (download direto: https://archive.org/download/stackexchange/mathoverflow.net.7z). São usados `Users.xml` e `Posts.xml`. O conteúdo é distribuído sob licença CC BY-SA.
+
+Referências:
+- Paranjape, A., Benson, A. R., Leskovec, J. Motifs in Temporal Networks. Proceedings of the 10th ACM International Conference on Web Search and Data Mining (WSDM), 2017. Artigo que acompanha os conjuntos temporais do SNAP.
+- Traag, V. A., Waltman, L., van Eck, N. J. From Louvain to Leiden: guaranteeing well-connected communities. Scientific Reports 9, 5233, 2019. Algoritmo de detecção de comunidades usado (pacote `leidenalg`).
+
 ## Decisões de método (desvios da proposta)
 - Leiden roda no grafo não-dirigido com pesos somados (laços removidos: 56.990 em c2q e 55.676 em c2a são autocomentários). PageRank usa o grafo dirigido.
 - CDlib não foi usado: o pareamento de Jaccard é simples e foi implementado diretamente (evita dependência pesada). Se o grupo quiser manter CDlib no texto, ajustar a proposta.
