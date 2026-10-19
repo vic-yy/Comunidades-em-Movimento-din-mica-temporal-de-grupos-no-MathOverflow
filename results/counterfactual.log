@@ -1,0 +1,6 @@
+all
+answers
+comments
+all n= 24 dJ expert -0.076 rand 0.011 (Wilcoxon p=0.0000) | dQ expert 0.192 rand 0.005 (p=0.0000)
+answers n= 24 dJ expert -0.019 rand 0.001 (Wilcoxon p=0.0000) | dQ expert 0.109 rand 0.009 (p=0.0000)
+comments n= 24 dJ expert -0.093 rand 0.007 (Wilcoxon p=0.0000) | dQ expert 0.201 rand 0.005 (p=0.0000)
